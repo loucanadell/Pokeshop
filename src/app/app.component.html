@@ -1,0 +1,37 @@
+<div>
+  <input type="text" [(ngModel)]="pokemonFilter.name" placeholder="Type to filter by name">
+  <input type="text" [(ngModel)]="pokemonFilter.id" placeholder="Type to filter by id">
+
+    <select [(ngModel)]="pokemonFilter.type">
+      <option></option>
+      <option>Grass</option>
+      <option>Poison</option>
+      <option>Fire</option>
+      <option>Flying</option>
+      <option>Water</option>
+      <option>Bug</option>
+      <option>Normal</option>
+      <option>Fighting</option>
+      <option>Rock</option>
+      <option>Steel</option>
+      <option>Ice</option>
+      <option>Ghost</option>
+      <option>Dragon</option>
+      <option>Psychic</option>
+      <option>Ground</option>
+      <option>Electric</option>  
+    </select>
+
+  <ul>
+    <li *ngFor="let pokemon of pokemons | filterBy: pokemonFilter">
+      <pre>{{ pokemon.name }}</pre>
+      <pre>{{ pokemon.id }}</pre>
+      {{ pokemon.type }}
+      <img src={{pokemon.img}} height="220px" width="220px">
+    </li>
+    
+    <li *ngIf="(pokemons | filterBy: pokemonFilter).length === 0">
+      No matching elements
+    </li>
+  </ul>
+</div>
